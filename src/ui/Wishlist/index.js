@@ -2,22 +2,35 @@ import React from 'react'
 import WishlistCard from '../../components/WishlistCard';
 
 export default function Wishlist() {
-    const userId = window.location.pathname.split('/')[2];
     const [user, setUser] = React.useState({});
+    const token = localStorage.getItem('token');
+
+    React.useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                if (token) {
+                    const response = await fetch('http://localhost:5000/auth/profile', {
+                        method: 'POST',
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch user profile');
+                    }
+                    setUser(await response.json());
+                }
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
+        };
+
+        fetchUserProfile();
+    }, []);
 
     const [wishlist, setWishlist] = React.useState({});
     const [wishlistCars, setWishlistCars] = React.useState([]);
-
-
-    React.useEffect(() => {
-        if (userId !== undefined && wishlist) {
-            fetch(`http://localhost:5000/users/${userId}`)
-                .then(response => response.json())
-                .then(data => {
-                    setUser(data);
-                });
-        }
-    }, [userId]);
 
     React.useEffect(() => {
         fetch(`http://localhost:5000/wishlists/${user.wishlistId}`)
@@ -39,7 +52,7 @@ export default function Wishlist() {
         }
     }, [wishlist.cars]);
 
-    if (userId === 'undefined') {
+    if (!token) {
         return <h1 className='text-4xl font-bold text-center my-8'>Please log in to view your wishlist!</h1>
     }
 

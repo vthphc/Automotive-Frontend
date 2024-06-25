@@ -27,7 +27,6 @@ export default function NavBar() {
         localStorage.removeItem('token');
         window.location.reload();
     };
-    const handleProfile = () => { };
 
     React.useEffect(() => {
         const fetchUserProfile = async () => {
@@ -79,7 +78,7 @@ export default function NavBar() {
                     hover:bg-purple-600
                     hover:text-zinc-50
                     transition-colors duration-300 ease-in-out'
-                    to={`/wishlist/${user._id}`}>Wishlist</Link>
+                    to={`/wishlist`}>Wishlist</Link>
 
                 <Link
                     className='flex px-4 items-center rounded-md text-purple-950
@@ -97,9 +96,9 @@ export default function NavBar() {
                         onClick={toggleDropdown}>Hi, {user.fullName}!
                         {isDropdownOpen && (
                             <div ref={dropdownRef} className='absolute top-16 right-0 bg-white shadow-md rounded-md p-2 z-50'>
-                                <button onClick={handleProfile} className='block w-full rounded text-purple-950 text-left mb-2 py-2 px-4 hover:bg-purple-600 hover:text-white duration-300 ease-in-out'>
+                                <Link to={`/profile`} className='block w-full rounded text-purple-950 text-left mb-2 py-2 px-4 hover:bg-purple-600 hover:text-white duration-300 ease-in-out'>
                                     Profile
-                                </button>
+                                </Link>
                                 <button onClick={handleLogout} className='block w-full rounded text-purple-950 text-left py-2 px-4 hover:bg-red-500 hover:text-white duration-300 ease-in-out'>
                                     Logout
                                 </button>

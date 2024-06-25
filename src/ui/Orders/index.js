@@ -4,7 +4,7 @@ import OrderCard from '../../components/OrderCard';
 export default function Orders() {
     const [user, setUser] = React.useState({});
     const token = localStorage.getItem('token');
-
+    
     React.useEffect(() => {
         const fetchUserProfile = async () => {
             try {
