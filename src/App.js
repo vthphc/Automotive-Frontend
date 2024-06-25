@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React from 'react'
+import HomePage from './ui/HomePage'
+import Introduction from './ui/Introduction'
+import Cars from './ui/Cars';
+import CarDetails from './components/CarDetails';
+import { Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar';
 import './App.css';
+import Welcome from './ui/Welcome';
+import Wishlist from './ui/Wishlist';
+import Orders from './ui/Orders';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='fixed-nav'>
+      <NavBar className='' />
+      <Routes>
+        <Route path='/' element={<Welcome />} />
+        <Route path='/orders' element={<Orders />} />
+        <Route path='/homepage' element={<HomePage />} />
+        <Route path='/introduction' element={<Introduction />} />
+        <Route path='/cars' element={<Cars />} />
+        <Route path='/cars/:id' element={<CarDetails />} />
+        <Route path='/wishlist/:id' element={<Wishlist />} />
+      </Routes>
     </div>
-  );
+  )
 }
-
-export default App;
