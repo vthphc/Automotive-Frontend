@@ -1,17 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import CarCard from '../../components/CarCard'
 import Footer from '../../components/Footer'
 
 export default function HomePage() {
-    const [cars, setCars] = React.useState([])
     const [categories, setCategories] = React.useState([])
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/cars')
-            .then(response => response.json())
-            .then(data => setCars(data))
-
         fetch('http://localhost:5000/categories')
             .then(response => response.json())
             .then(data => setCategories(data))

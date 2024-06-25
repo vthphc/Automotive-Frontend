@@ -80,7 +80,7 @@ export default function CarDetails() {
     }, [id])
 
     const handleAddToWishlist = async () => {
-        if (token != undefined) {
+        if (token) {
             try {
                 const response = await fetch(`http://localhost:5000/wishlists/${user.wishlistId}`, {
                     method: 'PUT',
