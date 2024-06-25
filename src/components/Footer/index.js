@@ -11,7 +11,7 @@ export default function Footer() {
                 <p className=''>
                     © 2024 Cars.com Inc. All rights reserved.
                 </p>
-                <a className='text-sky-700' href="https://github.com/vthphc/theVinFast-UI" target="_blank" rel="noopener noreferrer">
+                <a className='text-sky-700' href="https://github.com/vthphc" target="_blank" rel="noopener noreferrer">
                     GitHub Repository
                 </a>
             </div>

@@ -108,7 +108,7 @@ export default function CarDetails() {
     return (
         <div className='flex flex-col items-center'>
             <div className='flex justify-center'>
-                <div className='flex bg-zinc-50 h-[26rem] rounded-3xl flex-row w-[88rem]'>
+                <div className='flex bg-zinc-50 h-[26rem] rounded-3xl flex-row w-[80rem]'>
                     <img
                         className='rounded-l-3xl min-w-screen-md w-[32rem] object-cover'
                         fill sizes="900px"
@@ -167,7 +167,7 @@ export default function CarDetails() {
             </div>
             <div className='w-[88rem]'>
                 <h1 className='text-2xl mt-8 font-bold text-gray-800'>Other Cars You Might Like</h1>
-                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-x-10 my-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-x-4 my-4'>
                     {otherCars.map(car => (
                         <CarCard key={car.id} car={car} />
                     ))}

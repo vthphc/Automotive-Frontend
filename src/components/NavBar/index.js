@@ -62,26 +62,26 @@ export default function NavBar() {
             </Link>
             <div className='flex w-2/4 flex-row justify-evenly'>
                 <Link
-                    className='flex px-4 items-center rounded-md text-purple-950
+                    className='flex px-4 items-center rounded-md text-zinc-800
                     hover:bg-purple-600
                     hover:text-zinc-50
                     transition-colors duration-300 ease-in-out'
                     to='/homepage'>Home</Link>
                 <Link
-                    className='flex px-4 items-center rounded-md text-purple-950
+                    className='flex px-4 items-center rounded-md text-zinc-800
                     hover:bg-purple-600
                     hover:text-zinc-50
                     transition-colors duration-300 ease-in-out'
                     to='/cars'>Cars</Link>
                 <Link
-                    className='flex px-4 items-center rounded-md text-purple-950
+                    className='flex px-4 items-center rounded-md text-zinc-800
                     hover:bg-purple-600
                     hover:text-zinc-50
                     transition-colors duration-300 ease-in-out'
                     to={`/wishlist`}>Wishlist</Link>
 
                 <Link
-                    className='flex px-4 items-center rounded-md text-purple-950
+                    className='flex px-4 items-center rounded-md text-zinc-800
                     hover:bg-purple-600
                     hover:text-zinc-50
                     transition-colors duration-300 ease-in-out'
@@ -89,17 +89,17 @@ export default function NavBar() {
 
                 {token ? (
                     <div
-                        className='relative flex px-4 items-center rounded-md text-purple-950
+                        className='relative flex px-4 items-center rounded-md text-zinc-800
                     hover:bg-purple-600
                     hover:text-zinc-50
                     transition-colors duration-300 ease-in-out cursor-pointer'
                         onClick={toggleDropdown}>Hi, {user.fullName}!
                         {isDropdownOpen && (
                             <div ref={dropdownRef} className='absolute top-16 right-0 bg-white shadow-md rounded-md p-2 z-50'>
-                                <Link to={`/profile`} className='block w-full rounded text-purple-950 text-left mb-2 py-2 px-4 hover:bg-purple-600 hover:text-white duration-300 ease-in-out'>
+                                <Link to={`/profile`} className='block w-full rounded text-zinc-800 text-left mb-2 py-2 px-4 hover:bg-purple-600 hover:text-white duration-300 ease-in-out'>
                                     Profile
                                 </Link>
-                                <button onClick={handleLogout} className='block w-full rounded text-purple-950 text-left py-2 px-4 hover:bg-red-500 hover:text-white duration-300 ease-in-out'>
+                                <button onClick={handleLogout} className='block w-full rounded text-zinc-800 text-left py-2 px-4 hover:bg-red-500 hover:text-white duration-300 ease-in-out'>
                                     Logout
                                 </button>
                             </div>
@@ -107,7 +107,7 @@ export default function NavBar() {
                     </div>
                 ) : (
                     <Link
-                        className='flex px-4 items-center rounded-md text-purple-950
+                        className='flex px-4 items-center rounded-md text-zinc-800
                         hover:bg-purple-600
                         hover:text-zinc-50
                         transition-colors duration-300 ease-in-out'

@@ -43,7 +43,7 @@ export default function WishlistCard({ car, wishlistId }) {
 
     return (
         <div>
-            <div className='flex p-4 rounded-xl flex-row bg-gray-100 w-[88rem] justify-between'>
+            <div className='flex p-4 rounded-xl flex-row bg-gray-100 w-[44rem] justify-between'>
                 <Link className='flex flex-row' to={`/cars/${car._id}`}>
                     <img
                         className='w-[100px] h-[100px] rounded-xl object-cover'
@@ -60,7 +60,7 @@ export default function WishlistCard({ car, wishlistId }) {
                     <p className='text-lg ml-4'>${car.price}</p>
                 </div>
                 <div>
-                    <button className='bg-red-500 text-white px-4 py-2 rounded-lg'
+                    <button className='bg-purple-600 font-semibold text-white px-4 py-2 rounded-lg'
                         onClick={handleRemoveFromWishlist}
                     >Remove</button>
                 </div>

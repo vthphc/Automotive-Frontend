@@ -28,10 +28,10 @@ export default function OrderCard({ order }) {
     }, [order.cars]);
 
     return (
-        <div key={order._id} className='flex p-4 rounded-xl flex-row bg-gray-100 w-[88rem] justify-between'>
+        <div key={order._id} className='flex p-4 rounded-xl flex-row bg-gray-100 w-[70rem] justify-between'>
             <div className='flex flex-col space-y-4 justify-between'>
                 <div className='flex flex-row space-x-8 '>
-                    <p className='text-xl font-bold'>Order ID: {order._id}</p>
+                    <p className='text-xl text-purple-600 font-bold'>Order ID: {order._id}</p>
                     <p className='text-lg'>Order Date: {formatDate(order.orderDate)}</p>
                     <p className='text-lg'>Payment Date: {formatDate(order.paymentDate)}</p>
                 </div>
@@ -48,7 +48,7 @@ export default function OrderCard({ order }) {
                     <p className='text-lg ml-4'>{order.status}</p>
                 </div>
                 <div className='flex items-center justify-center'>
-                    <p className='text-lg font-bold'>Total Price:</p>
+                    <p className='text-lg text-purple-600 font-bold'>Total Price:</p>
                     <p className='text-lg ml-4'>${order.total.toLocaleString()}</p>
                 </div>
             </div>
