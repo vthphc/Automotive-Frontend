@@ -1,5 +1,4 @@
 import React from 'react'
-import CarDetails from '../../components/CarDetails'
 import CarCard from '../../components/CarCard'
 
 export default function Cars() {
@@ -34,14 +33,14 @@ export default function Cars() {
                     placeholder='Model...'
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    className='bg-gray-100 text-zinc-800 font-genshin mt-2 p-2 rounded-md w-[42rem] focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent'
+                    className='bg-gray-100 text-zinc-800 mt-2 p-2 rounded-md w-[42rem] focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent'
                 />
                 <input
                     type='number'
                     placeholder='Years...'
                     value={searchYear}
                     onChange={handleYearSearchChange}
-                    className='bg-gray-100 text-zinc-800 font-genshin mt-2 p-2 rounded-md w-[42rem] focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent'
+                    className='bg-gray-100 text-zinc-800 mt-2 p-2 rounded-md w-[42rem] focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent'
                 />
             </div>
             <div className='w-[88rem]'>
