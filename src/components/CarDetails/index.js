@@ -105,6 +105,14 @@ export default function CarDetails() {
         }
     };
 
+    const handleBuyNow = async () => {
+        if (token) {
+            window.location.href = `http://localhost:3000/checkout/${id}`;
+        } else {
+            alert('You need to be logged in to buy now')
+        }
+    };
+
     return (
         <div className='flex flex-col items-center'>
             <div className='flex justify-center'>
@@ -153,12 +161,16 @@ export default function CarDetails() {
                                     <p>${car.price?.toLocaleString()}</p>
                                 </div>
                                 <div className='flex'>
-                                    <button className='flex justify-center self-center bg-purple-700 text-zinc-50 font-medium text-lg rounded-md px-4 py-2 mr-2 
-                            hover:bg-purple-800 transition-colors duration-300 ease-in-out'
+                                    <button
+                                        className='flex justify-center self-center bg-purple-700 text-zinc-50 font-medium text-lg rounded-md px-4 py-2 mr-2 
+                                        hover:bg-purple-800 transition-colors duration-300 ease-in-out'
                                         onClick={handleAddToWishlist}
                                     >Add to Wishlist</button>
-                                    <button className='flex justify-center self-center bg-purple-700 text-zinc-50 font-medium text-lg rounded-md px-4 py-2 ml-2
-                            hover:bg-purple-800 transition-colors duration-300 ease-in-out'>Buy Now</button>
+                                    <button
+                                        className='flex justify-center self-center bg-purple-700 text-zinc-50 font-medium text-lg rounded-md px-4 py-2 ml-2
+                                        hover:bg-purple-800 transition-colors duration-300 ease-in-out'
+                                        onClick={handleBuyNow}
+                                    >Buy Now</button>
                                 </div>
                             </div>
                         </div>

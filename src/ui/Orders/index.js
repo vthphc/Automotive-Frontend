@@ -2,9 +2,10 @@ import React from 'react'
 import OrderCard from '../../components/OrderCard';
 
 export default function Orders() {
-    const [user, setUser] = React.useState({});
     const token = localStorage.getItem('token');
-    
+
+    const [user, setUser] = React.useState({});
+
     React.useEffect(() => {
         const fetchUserProfile = async () => {
             try {
@@ -27,6 +28,7 @@ export default function Orders() {
         };
 
         fetchUserProfile();
+        console.log(user.orderIds);
     }, [token]);
 
 
@@ -35,7 +37,7 @@ export default function Orders() {
     React.useEffect(() => {
         const fetchOrders = async () => {
             try {
-                if (token) {
+                if (user.orderIds && user.orderIds.length > 0) {
                     const response = await fetch(`http://localhost:5000/orders?ids=${user.orderIds.join(',')}`, {
                         method: 'GET',
                         headers: {
@@ -48,6 +50,10 @@ export default function Orders() {
                     }
                     setOrders(await response.json());
                     console.log(orders);
+                }
+
+                else {
+                    console.log('No token found');
                 }
             } catch (error) {
                 console.error('Error fetching orders:', error);

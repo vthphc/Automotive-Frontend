@@ -42,7 +42,7 @@ export default function OrderCard({ order }) {
                     ))}
                 </div>
             </div>
-            <div className='flex flex-col items-center justify-between'>
+            <div className='flex flex-col items-end justify-between'>
                 <div className='flex items-center justify-center'>
                     <p className='text-lg font-bold'>Status:</p>
                     <p className='text-lg ml-4'>{order.status}</p>
