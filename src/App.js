@@ -10,6 +10,7 @@ import Welcome from './ui/Welcome';
 import Wishlist from './ui/Wishlist';
 import Orders from './ui/Orders';
 import Profile from './ui/Profile';
+import SignUp from './ui/SignUp';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Welcome />} />
         <Route path='/orders' element={<Orders />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/homepage' element={<HomePage />} />
         <Route path='/introduction' element={<Introduction />} />
         <Route path='/cars' element={<Cars />} />

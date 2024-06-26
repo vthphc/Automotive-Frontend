@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Welcome() {
     const [username, setUsername] = useState('');
@@ -30,6 +31,12 @@ export default function Welcome() {
             setError('Invalid username or password');
         }
     };
+
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        window.location.href = '/homepage';
+    }
 
     return (
         <div className="flex flex-row items-center justify-between min-h-screen bg-purple-950">
@@ -70,12 +77,11 @@ export default function Welcome() {
                         />
                     </div>
                     <div className="flex items-center space-x-6 justify-center">
-                        <button
-                            className="bg-gray-100 w-full hover:bg-gray-200 text-purple-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            onClick={handleLogin}
+                        <Link to="/signup"
+                            className="bg-gray-100 text-center w-full hover:bg-gray-200 text-purple-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         >
                             Sign up
-                        </button>
+                        </Link>
                         <button
                             className="bg-purple-700 w-full hover:bg-purple-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             onClick={handleLogin}
