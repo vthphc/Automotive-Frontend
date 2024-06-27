@@ -5,12 +5,16 @@ export default function WishlistCard({ car, wishlistId }) {
     const [carImages, setCarImages] = React.useState([]);
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/images/${car.images}`)
-            .then(response => response.json())
-            .then(data => setCarImages(data))
-            .catch(error => {
-                console.error('Error fetching images:', error);
-            });
+        try {
+            fetch(`http://localhost:5000/images/${car.images}`)
+                .then(response => response.json())
+                .then(data => setCarImages(data))
+                .catch(error => {
+                    console.error('Error fetching images:', error);
+                });
+        } catch (error) {
+            console.error('Error fetching images:', error);
+        }
     }, [car.images]);
 
     const handleRemoveFromWishlist = async () => {
@@ -55,14 +59,16 @@ export default function WishlistCard({ car, wishlistId }) {
                         <p className='text-lg'>Year: {car.year}</p>
                     </div>
                 </Link>
-                <div className='flex items-center justify-center'>
-                    <p className='text-lg font-bold'>Price:</p>
-                    <p className='text-lg ml-4'>${car.price}</p>
-                </div>
-                <div>
-                    <button className='bg-purple-600 font-semibold text-white px-4 py-2 rounded-lg'
-                        onClick={handleRemoveFromWishlist}
-                    >Remove</button>
+                <div className='flex flex-col justify-between'>
+                    <div className='flex justify-end'>
+                        <button className='bg-purple-600 font-semibold text-white px-4 py-2 rounded-lg'
+                            onClick={handleRemoveFromWishlist}
+                        >Remove</button>
+                    </div>
+                    <div className='flex justify-end'>
+                        <p className='text-lg font-bold'>Price:</p>
+                        <p className='text-lg ml-2'>${car.price}</p>
+                    </div>
                 </div>
             </div>
         </div>

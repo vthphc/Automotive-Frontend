@@ -97,6 +97,7 @@ export default function CarDetails() {
                     throw new Error('Failed to update wishlist');
                 }
                 alert('Wishlist updated successfully!');
+                window.location.href = '/wishlist';
             } catch (error) {
                 console.error(error);
             }
@@ -119,7 +120,6 @@ export default function CarDetails() {
                 <div className='flex bg-zinc-50 h-[26rem] rounded-3xl flex-row w-[80rem]'>
                     <img
                         className='rounded-l-3xl min-w-screen-md w-[32rem] object-cover'
-                        fill sizes="900px"
                         src={carImages?.images?.[selectedImage]} alt={car.make} />
                     <div className='w-[14rem] pl-4 my-4 overflow-y-scroll no-scrollbar'>
                         <div className="flex flex-col space-y-2">
@@ -181,7 +181,7 @@ export default function CarDetails() {
                 <h1 className='text-2xl mt-8 font-bold text-gray-800'>Other Cars You Might Like</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-x-4 my-4'>
                     {otherCars.map(car => (
-                        <CarCard key={car.id} car={car} />
+                        <CarCard key={car._id} car={car} />
                     ))}
                 </div>
             </div>

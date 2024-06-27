@@ -47,7 +47,7 @@ export default function Cars() {
                 <h1 className='text-2xl mt-6 font-bold text-gray-800'>Cars</h1>
                 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-4 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-4 gap-x-10 my-4'>
                     {filteredCars.map(car => (
-                        <CarCard key={car.id} car={car} />
+                        <CarCard key={car._id} car={car} />
                     ))}
                 </div>
             </div>

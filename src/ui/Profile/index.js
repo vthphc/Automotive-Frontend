@@ -55,6 +55,26 @@ export default function Profile() {
         fetchAddresses();
     }, [user.addresses]);
 
+    const handleDelete = async (addressId) => {
+        alert('Are you sure you want to delete this address?');
+        try {
+            const response = await fetch(`http://localhost:5000/addresses/${addressId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete address');
+            }
+
+            window.location.reload();
+        } catch (error) {
+            console.error('Error deleting address:', error);
+        }
+    }
+
     return (
         <div className='flex mb-8 flex-col'>
             <h1 className='text-4xl font-bold text-center my-8'>Welcome, {user.fullName}!</h1>
@@ -75,10 +95,22 @@ export default function Profile() {
                 {
                     userAddresses.length > 0 ? userAddresses.map((address, index) => (
                         <div key={index} className='flex flex-col '>
-                            <p className='text-lg font-semibold'>{index + 1}.</p>
-                            <div className='border-b-2 text-start text-gray-400 space-y-2'>
-                                <p className='text-lg font-medium'>{address.addressLine}</p>
-                                <p className='text-lg font-medium'>{address.city}, {address.country}</p>
+                            <div className='flex flex-row justify-between mb-4'>
+                                <p className='text-lg font-semibold'>{index + 1}.</p>
+                                <button
+                                    className='text-purple-600 font-bold'
+                                    onClick={() => handleDelete(address._id)}
+                                >Delete</button>
+                            </div>
+                            <div className='border-b-2 pb-2 text-start space-y-2'>
+                                <div className='flex flex-row justify-between'>
+                                    <p className='text-md font-medium'>Address Line:</p>
+                                    <p className='text-md text-gray-400'>{address.addressLine}</p>
+                                </div>
+                                <div className='flex flex-row justify-between'>
+                                    <p className='text-md font-medium'>City, Country:</p>
+                                    <p className='text-md text-gray-400'>{address.city}, {address.country}</p>
+                                </div>
                             </div>
                         </div>
                     )) : <p className='text-lg text-gray-400 font-medium'>No addresses added yet!</p>

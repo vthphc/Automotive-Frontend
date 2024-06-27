@@ -37,48 +37,52 @@ export default function AddAddress() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        try {
-            const addressResponse = await fetch('http://localhost:5000/addresses', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    userId: user._id,
-                    addressLine,
-                    city,
-                    country,
-                }),
-            });
+        if (!addressLine || !city || !country) {
+            alert('Please fill in all fields');
+        } else {
+            try {
+                const addressResponse = await fetch('http://localhost:5000/addresses', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        userId: user._id,
+                        addressLine,
+                        city,
+                        country,
+                    }),
+                });
 
-            if (!addressResponse.ok) {
-                throw new Error('Failed to add address');
+                if (!addressResponse.ok) {
+                    throw new Error('Failed to add address');
+                }
+
+                const newAddress = await addressResponse.json();
+
+                const userResponse = await fetch('http://localhost:5000/users/addresses', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        userId: user._id,
+                        addressId: newAddress._id,
+                    }),
+                });
+
+                if (!userResponse.ok) {
+                    throw new Error('Failed to update user with new address');
+                }
+
+                setNewAddress(newAddress);
+                alert('Address added successfully');
+                window.location.href = '/profile';
+            } catch (error) {
+                console.error('Error adding address:', error);
             }
-
-            const newAddress = await addressResponse.json();
-
-            const userResponse = await fetch('http://localhost:5000/users/addresses', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    userId: user._id,
-                    addressId: newAddress._id,
-                }),
-            });
-
-            if (!userResponse.ok) {
-                throw new Error('Failed to update user with new address');
-            }
-
-            setNewAddress(newAddress);
-            alert('Address added successfully');
-            window.location.href = '/profile';
-        } catch (error) {
-            console.error('Error adding address:', error);
         }
     };
 

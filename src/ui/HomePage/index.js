@@ -24,8 +24,8 @@ export default function HomePage() {
             <section className='p-8 mx-6 mb-2'>
                 <h2 className='text-2xl font-bold mb-4'>Popular Categories</h2>
                 <div className='font-medium grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4'>
-                    {categories.map(category => (
-                        <div key={category.id} className='flex hover:bg-gray-100 justify-center w-[12rem] bg-white p-4 rounded shadow-md'>{category.categoryName}</div>
+                    {categories.map((category) => (
+                        <div key={category._id} className='flex hover:bg-gray-100 justify-center w-[12rem] bg-white p-4 rounded shadow-md'>{category.categoryName}</div>
                     ))}
                     <div className='flex hover:bg-gray-100 justify-center w-[12rem] bg-white p-4 rounded shadow-md'>View All</div>
                 </div>

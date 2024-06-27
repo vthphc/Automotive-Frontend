@@ -9,23 +9,28 @@ export default function SignUp() {
 
     const handleSignUp = async (e) => {
         e.preventDefault()
-        try {
-            const response = await fetch('http://localhost:5000/auth/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password, fullName, email, phoneNumber, addesses: [] }),
-            })
+        if (!username || !password || !fullName || !email || !phoneNumber) {
+            alert('Please fill in all fields')
+            return;
+        } else {
+            try {
+                const response = await fetch('http://localhost:5000/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password, fullName, email, phoneNumber, addesses: [] }),
+                })
 
-            if (!response.ok) {
-                throw new Error('Sign up failed')
+                if (!response.ok) {
+                    throw new Error('Sign up failed')
+                }
+
+                console.log('Sign up successful')
+                window.location.href = '/'
+            } catch (error) {
+                console.error('Sign up error:', error)
             }
-
-            console.log('Sign up successful')
-            window.location.href = '/'
-        } catch (error) {
-            console.error('Sign up error:', error)
         }
     }
 

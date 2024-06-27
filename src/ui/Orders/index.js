@@ -28,7 +28,6 @@ export default function Orders() {
         };
 
         fetchUserProfile();
-        console.log(user.orderIds);
     }, [token]);
 
 
@@ -49,7 +48,6 @@ export default function Orders() {
                         throw new Error('Failed to fetch orders');
                     }
                     setOrders(await response.json());
-                    console.log(orders);
                 }
 
                 else {
