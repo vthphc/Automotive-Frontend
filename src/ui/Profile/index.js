@@ -9,7 +9,7 @@ export default function Profile() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ export default function Profile() {
         const fetchAddresses = async () => {
             try {
                 if (user.addresses && user.addresses.length > 0) {
-                    const response = await fetch(`http://localhost:5000/addresses?ids=${user.addresses.join(',')}`, {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/addresses?ids=${user.addresses.join(',')}`, {
                         method: 'GET',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ export default function Profile() {
     const handleDelete = async (addressId) => {
         alert('Are you sure you want to delete this address?');
         try {
-            const response = await fetch(`http://localhost:5000/addresses/${addressId}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/addresses/${addressId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,

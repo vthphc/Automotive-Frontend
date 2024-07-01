@@ -10,7 +10,7 @@ export default function Checkout() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -32,9 +32,13 @@ export default function Checkout() {
     const [payments, setPayments] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/payments')
-            .then(response => response.json())
-            .then(data => setPayments(data))
+        try {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/payments`)
+                .then(response => response.json())
+                .then(data => setPayments(data))
+        } catch (error) {
+            console.error(error)
+        }
     }, [])
 
     const [car, setCar] = React.useState({})
@@ -42,7 +46,7 @@ export default function Checkout() {
 
     React.useEffect(() => {
         try {
-            fetch(`http://localhost:5000/cars/${carId}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/cars/${carId}`)
                 .then(response => response.json())
                 .then(data => setCar(data))
         } catch (error) {
@@ -71,7 +75,7 @@ export default function Checkout() {
         event.preventDefault();
 
         try {
-            const orderResponse = await fetch('http://localhost:5000/orders', {
+            const orderResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -94,7 +98,7 @@ export default function Checkout() {
 
             const newOrder = await orderResponse.json();
 
-            const userResponse = await fetch(`http://localhost:5000/users/orders`, {
+            const userResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/orders`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

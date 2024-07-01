@@ -11,7 +11,7 @@ export default function OrderCard({ order }) {
     React.useEffect(() => {
         const fetchOrderCars = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/cars?ids=${order.cars.join(',')}`, {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/cars?ids=${order.cars.join(',')}`, {
                     method: 'GET',
                 });
 

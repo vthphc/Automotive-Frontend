@@ -14,7 +14,7 @@ export default function AddAddress() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ export default function AddAddress() {
             alert('Please fill in all fields');
         } else {
             try {
-                const addressResponse = await fetch('http://localhost:5000/addresses', {
+                const addressResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/addresses`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export default function AddAddress() {
 
                 const newAddress = await addressResponse.json();
 
-                const userResponse = await fetch('http://localhost:5000/users/addresses', {
+                const userResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/addresses`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

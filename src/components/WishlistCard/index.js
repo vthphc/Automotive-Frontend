@@ -6,7 +6,7 @@ export default function WishlistCard({ car, wishlistId }) {
 
     React.useEffect(() => {
         try {
-            fetch(`http://localhost:5000/images/${car.images}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/images/${car.images}`)
                 .then(response => response.json())
                 .then(data => setCarImages(data))
                 .catch(error => {
@@ -18,13 +18,14 @@ export default function WishlistCard({ car, wishlistId }) {
     }, [car.images]);
 
     const handleRemoveFromWishlist = async () => {
+        alert('Are you sure you want to remove this car from your wishlist?');
         try {
             const token = localStorage.getItem('token');
             if (!token) {
                 throw new Error('Unauthorized');
             }
 
-            const response = await fetch(`http://localhost:5000/wishlists/remove/${wishlistId}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/wishlists/remove/${wishlistId}`, {
                 method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${token}`,

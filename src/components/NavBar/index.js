@@ -32,7 +32,7 @@ export default function NavBar() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,

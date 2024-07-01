@@ -10,7 +10,7 @@ export default function CarDetails() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ export default function CarDetails() {
 
     React.useEffect(() => {
         try {
-            fetch(`http://localhost:5000/cars/${id}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/cars/${id}`)
                 .then(response => response.json())
                 .then(data => setCar(data))
         } catch (error) {
@@ -51,7 +51,7 @@ export default function CarDetails() {
 
     React.useEffect(() => {
         try {
-            fetch(`http://localhost:5000/images/${car.images}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/images/${car.images}`)
                 .then(response => response.json())
                 .then(data => setCarImages(data))
         } catch (error) {
@@ -61,7 +61,7 @@ export default function CarDetails() {
 
     React.useEffect(() => {
         try {
-            fetch(`http://localhost:5000/categories/${car.categories}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/categories/${car.categories}`)
                 .then(response => response.json())
                 .then(data => setCarCategories(data))
         } catch (error) {
@@ -71,7 +71,7 @@ export default function CarDetails() {
 
     React.useEffect(() => {
         try {
-            fetch(`http://localhost:5000/cars/exclude/${id}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/cars/exclude/${id}`)
                 .then(response => response.json())
                 .then(data => setOtherCars(data))
         } catch (error) {
@@ -82,7 +82,7 @@ export default function CarDetails() {
     const handleAddToWishlist = async () => {
         if (token) {
             try {
-                const response = await fetch(`http://localhost:5000/wishlists/${user.wishlistId}`, {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/wishlists/${user.wishlistId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

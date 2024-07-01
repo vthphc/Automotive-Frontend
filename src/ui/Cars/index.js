@@ -7,9 +7,27 @@ export default function Cars() {
     const [searchYear, setSearchYear] = React.useState('');
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/cars')
-            .then(response => response.json())
-            .then(data => setCars(data))
+        const fetchCars = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/cars`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch cars');
+                }
+
+                const carsData = await response.json();
+                setCars(carsData);
+            } catch (error) {
+                console.error('Error fetching cars:', error);
+            }
+        }
+
+        fetchCars();
     }, [])
 
     const handleSearchChange = (event) => {

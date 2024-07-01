@@ -14,7 +14,7 @@ export default function SignUp() {
             return;
         } else {
             try {
-                const response = await fetch('http://localhost:5000/auth/signup', {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -27,6 +27,7 @@ export default function SignUp() {
                 }
 
                 console.log('Sign up successful')
+                alert('Sign up successful! Please log in to continue.')
                 window.location.href = '/'
             } catch (error) {
                 console.error('Sign up error:', error)

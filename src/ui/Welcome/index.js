@@ -9,7 +9,7 @@ export default function Welcome() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/auth/login', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,6 +76,7 @@ export default function Welcome() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
+                    {error && <p className="text-red-500 text-md italic mb-4">{error}</p>}
                     <div className="flex items-center space-x-6 justify-center">
                         <Link to="/signup"
                             className="bg-gray-100 text-center w-full hover:bg-gray-200 text-purple-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

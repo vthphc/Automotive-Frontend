@@ -13,7 +13,7 @@ export default function Wishlist() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ export default function Wishlist() {
         const fetchWishlist = async () => {
             try {
                 if (token) {
-                    const response = await fetch(`http://localhost:5000/wishlists/${user.wishlistId}`, {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/wishlists/${user.wishlistId}`, {
                         method: 'GET',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ export default function Wishlist() {
         const fetchWishlistCars = async () => {
             try {
                 if (wishlist.cars && wishlist.cars.length > 0) {
-                    const response = await fetch(`http://localhost:5000/cars?ids=${wishlist.cars.join(',')}`, {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/cars?ids=${wishlist.cars.join(',')}`, {
                         method: 'GET',
                         headers: {
                             Authorization: `Bearer ${token}`,

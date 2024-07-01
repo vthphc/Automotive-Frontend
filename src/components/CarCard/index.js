@@ -5,9 +5,16 @@ export default function CarCard({ car }) {
     const [carImages, setCarImages] = React.useState([])
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/images/${car.images}`)
-            .then(response => response.json())
-            .then(data => setCarImages(data))
+        try {
+            const fetchCarImages = async () => {
+                fetch(`${process.env.REACT_APP_BACKEND_URL}/images/${car.images}`)
+                    .then(response => response.json())
+                    .then(data => setCarImages(data))
+            }
+            fetchCarImages()
+        } catch (error) {
+            console.error('Error fetching car images:', error)
+        }
     }, [])
     return (
         <Link to={`/cars/${car._id}`}>

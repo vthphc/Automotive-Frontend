@@ -6,9 +6,16 @@ export default function HomePage() {
     const [categories, setCategories] = React.useState([])
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(response => response.json())
-            .then(data => setCategories(data))
+        try {
+            const fetchCategories = async () => {
+                fetch(`${process.env.REACT_APP_BACKEND_URL}/categories`)
+                    .then(response => response.json())
+                    .then(data => setCategories(data))
+            }
+            fetchCategories()
+        } catch (error) {
+            console.error('Error fetching categories:', error)
+        }
     }, [])
 
     return (

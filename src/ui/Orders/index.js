@@ -10,7 +10,7 @@ export default function Orders() {
         const fetchUserProfile = async () => {
             try {
                 if (token) {
-                    const response = await fetch('http://localhost:5000/auth/profile', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/profile`, {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ export default function Orders() {
         const fetchOrders = async () => {
             try {
                 if (user.orderIds && user.orderIds.length > 0) {
-                    const response = await fetch(`http://localhost:5000/orders?ids=${user.orderIds.join(',')}`, {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/orders?ids=${user.orderIds.join(',')}`, {
                         method: 'GET',
                         headers: {
                             Authorization: `Bearer ${token}`,
