@@ -12,9 +12,10 @@ import Orders from './ui/Orders';
 import Profile from './ui/Profile';
 import SignUp from './ui/SignUp';
 import AddAddress from './components/AddAddress/index.js';
+import Checkout from './ui/Checkout/index.js';
+import EditProfile from './components/EditProfile/index.js';
 
 import './App.css';
-import Checkout from './ui/Checkout/index.js';
 
 export default function App() {
   return (
@@ -30,7 +31,8 @@ export default function App() {
         <Route path='/cars/:id' element={<CarDetails />} />
         <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/add-address' element={<AddAddress />} />
+        <Route path='/profile/edit' element={<EditProfile />} />
+        <Route path='/profile/add-address' element={<AddAddress />} />
         <Route path='/checkout/:id' element={<Checkout />} />
         <Route path='*' element={
           <div className='flex justify-center h-[35rem] items-center'>

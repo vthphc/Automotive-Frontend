@@ -116,10 +116,13 @@ export default function Profile() {
                     )) : <p className='text-lg text-gray-400 font-medium'>No addresses added yet!</p>
                 }
                 <div className='flex flex-row space-x-8'>
-                    <button className='bg-gray-200 w-full text-purple-600 font-bold py-2 rounded-md self-center'>Edit Profile</button>
+                    <Link
+                        className='bg-gray-200 text-center w-full text-purple-600 font-bold py-2 rounded-md self-center'
+                        to='/profile/edit'
+                    >Edit Profile</Link>
                     <Link
                         className='bg-purple-500 text-center w-full text-white font-bold py-2 rounded-md self-center'
-                        to='/add-address'
+                        to='/profile/add-address'
                     >Add Address</Link>
                 </div>
             </div>
